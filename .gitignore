@@ -1,5 +1,5 @@
 requirements.txt
-config
+config.py
 /__pycache__
 /gsv
 *.env
