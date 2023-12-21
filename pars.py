@@ -6,6 +6,9 @@ import requests
 import datetime
 import time
 
+
+#честно я добавлял данные в датасет
+
 df = pd.DataFrame(columns=['date', 'time', 'name', 'task'])
 
 def handle_text(text):
