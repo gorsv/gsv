@@ -56,9 +56,9 @@ def isTaskFormat(input):
     
 
 
-user_messages = input("Введите дату, время начала пары, название пары, надо ли сделать задание 'да' - 'нет': ")
+user_messages1 = input("Введите дату, время начала пары, название пары, надо ли сделать задание 'да' - 'нет': ")
 
-handle_text(user_messages)
+handle_text(user_messages1)
 
 # Выводим окончательный датасет
 print(df)
