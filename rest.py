@@ -2,6 +2,22 @@ import pandas as pd
 import datetime as DT
 import time
 
+#проверка на свободное время
+def its_freetime():
+    for i in range(3):
+        msg_input = input("Вы хотите записать время отдыха? Пожалуйста укажите - да или нет " )
+
+        if msg_input.lower() == "да":
+            print("Хорошо, введите следующие данные " )
+            time.sleep(1)
+            break
+
+        elif msg_input.lower() == "нет":
+            raise SystemExit("К сожалению вы выбрали не ту функцию, попробуйте поискать нужную вам")
+
+        else:
+            print("Введено неверное значение, попробуйте еще раз (попыток осталось - {})".format(2 - i))
+
 
 def input_data():
     data, firsttime, lasttime = None, None, None
