@@ -45,7 +45,7 @@ def input_data():
         return None
 
 
-# its_freetime()
+its_freetime()
 df = input_data()
 if df is not None:
     print(df)
