@@ -7,6 +7,7 @@ from aiogram.types import CallbackQuery, Message
 import config
 from handlers import Gen, kb, utils, parse, rest  # Подключение ваших модулей
 
+
 bot = Bot(token=config.BOT_TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
@@ -15,7 +16,7 @@ async def generate_rasp_callback(query: types.CallbackQuery):
     await query.answer()
     await query.message.answer("Давайте начнем! Ответьте на несколько вопросов для составления расписания.")
     await Gen.text_prompt.set()
-    
+
 @dp.message_handler(state=Gen.text_prompt)
 async def generate_schedule_handler(message: types.Message, state: FSMContext):
     user_response = message.text
@@ -40,7 +41,3 @@ if __name__ == '__main__':
     from aiogram import executor
     executor.start_polling(dp, skip_updates=True)
     
-
-
-
-

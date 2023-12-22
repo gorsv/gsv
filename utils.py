@@ -47,6 +47,3 @@ async def generate_image(prompt, n=1, size="1024x1024") -> list[str]:
         return []
     else:
         return urls
-    
-
-    

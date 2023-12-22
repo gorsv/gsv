@@ -15,3 +15,5 @@ def create_exit_kb():
 
 def create_inline_exit_kb():
     return InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="◀️ Выйти в меню", callback_data="menu")]])
+
+

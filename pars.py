@@ -6,9 +6,6 @@ import requests
 import datetime
 import time
 
-
-#честно я добавлял данные в датасет
-
 df = pd.DataFrame(columns=['date', 'time', 'name', 'task'])
 
 def handle_text(text):
@@ -47,23 +44,16 @@ def isTimeFormat(input):
         return True
     except ValueError:
         return False
-    
+
 def isTaskFormat(input):
     if input == "да" or input == "нет":
         return True
     else:
         return False
-    
 
+user_messages1 = input("Введите дату, время начала пары, название пары, надо ли сделать задание 'да' - 'нет': ")
 
-user_messages = input("Введите дату, время начала пары, название пары, надо ли сделать задание 'да' - 'нет': ")
-
-handle_text(user_messages)
+handle_text(user_messages1)
 
 # Выводим окончательный датасет
 print(df)
-
-
-
-
-
