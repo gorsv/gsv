@@ -32,7 +32,7 @@
 - [Python](https://www.python.org/)
 - [TensorFlow](https://www.tensorflow.org/?hl=ru)
 - [HTTP](https://developer.mozilla.org/ru/docs/Web/HTTP/Overview)
-- [ChatGPT] (https://chat.openai.com/)
+- [ChatGPT](https://chat.openai.com/)
 
 ## Файловая структура нашего бота:
 - main.py — точка входа, код запуска бота и инициализации всех остальных модулей
