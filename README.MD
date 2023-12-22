@@ -27,7 +27,7 @@
 - [Виталий К.](tg://Bonemarrow42) — Developer
 - [Денис С.](tg://DenisSenkevich) — Developer, Орг. вопросы, оформление
 - [Юлия Б.](tg://superrwom) — Developer
-- [Алёна А.](tg://AleksAlAl) — Исследования, тестирование, техническая писатель
+- [Алёна А.](tg://AleksAlAl) — Исследования, тестирование, технический писатель
 
  ## Технологии
 - [Python](https://www.python.org/)
