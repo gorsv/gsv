@@ -1,6 +1,10 @@
 import pandas as pd
 import datetime as DT
 import time
+from pathlib import Path
+
+DATAFILE_PATH = Path("rest.txt")
+COLUMNS=['Дата', 'Время начала отдыха', 'Время окончания отдыха']
 
 #проверка на свободное время
 def its_freetime():
@@ -39,11 +43,24 @@ def input_data():
 
     if data is not None and firsttime is not None and lasttime is not None:
         df = pd.DataFrame([[data, firsttime, lasttime]],
-                          columns=['Дата', 'Время начала отдыха', 'Время окончания отдыха'])
+                          columns=COLUMNS)
+        readAndWriteDF(df)
         return df
     else:
         return None
 
+def readAndWriteDF(df):
+    global DATAFILE_PATH
+    global COLUMNS
+    df_new = df
+    if DATAFILE_PATH.is_file():
+        df_file = pd.read_csv(DATAFILE_PATH, sep=",")
+        df_new = pd.concat([df_new, df_file])
+        df_new = df_new.drop_duplicates ()
+        df_new.to_csv(DATAFILE_PATH, sep=',', index=False)
+    else:
+        df_new.to_csv(DATAFILE_PATH, sep=',', index=False)
+    print("Данные добавлены в файл " + str(DATAFILE_PATH))
 
 its_freetime()
 df = input_data()

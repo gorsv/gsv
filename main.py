@@ -8,10 +8,10 @@ from aiogram.utils.chat_action import ChatActionMiddleware
 
 import config
 
-from handlers import router 
+from handlers import router
 
 async def main():
-    
+
     bot = Bot(token=config.BOT_TOKEN, parse_mode=ParseMode.HTML)
     dp = Dispatcher(storage=MemoryStorage())
     dp.message.middleware(ChatActionMiddleware())
@@ -22,7 +22,7 @@ async def main():
 if __name__ == "__main__" :
     logging.basicConfig(level=logging.INFO)
     asyncio.run(main())
-    
+
 
 
 
