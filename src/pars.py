@@ -3,6 +3,7 @@ import datetime
 import time
 from pathlib import Path
 
+# Словарь названий дисциплин и вариантов их написания
 DISCIPLINES = {
                'Операционная система Linux':['операционная система linux', 'linux', 'линукс', 'оп линукс', 'оп'],
                'Программирование на Python':['программирование на python', 'python', 'питон', 'программирование'],
@@ -13,11 +14,16 @@ DISCIPLINES = {
                'Цифровые компетенции в научной деятельности':['цифровые компетенции в научной деятельности', 'цифровые компетенции', 'цк'],
                'Проектный практикум':['проектный практикум', 'пп']
                }
-DATAFILE_PATH = Path("pars.txt")
+
+# Путь к файлу с датасетом расписания занятий
+DATAFILE_PATH = Path("./resources/pars.txt")
+
+# Список имён полей датасета
 COLUMNS = ['date', 'time', 'name', 'task']
 
 df = pd.DataFrame(columns=COLUMNS)
 
+# Функция для парсинга строки, введённой пользователем, в датасет
 def handle_text(text):
     global DISCIPLINES
     x = text.split(", ")
@@ -47,6 +53,7 @@ def handle_text(text):
         else:
             print("Некорректные данные")
 
+# Проверка является ли строка датой
 def isDateFormat(input):
     try:
         datetime.datetime.strptime(input, '%d.%m')
@@ -54,6 +61,7 @@ def isDateFormat(input):
     except ValueError:
         return False
 
+# Проверка является ли строка временем
 def isTimeFormat(input):
     try:
         time.strptime(input, '%H:%M')
@@ -61,16 +69,19 @@ def isTimeFormat(input):
     except ValueError:
         return False
 
+# Проверка является ли строка отметкой о наличии задания
 def isTaskFormat(input):
     if input == "да" or input == "нет":
         return True
     else:
         return False
 
+# Функция записи датасета свободного времени в файл
 def readAndWriteDF(df):
     global DATAFILE_PATH
     global COLUMNS
     df_new = df
+    # Проверка наличия файла. Создание файла, если его нет. Запись датасета в файл.
     if DATAFILE_PATH.is_file():
         df_file = pd.read_csv(DATAFILE_PATH, sep=",")
         df_new = pd.concat([df_new, df_file])
@@ -80,8 +91,8 @@ def readAndWriteDF(df):
         df_new.to_csv(DATAFILE_PATH, sep=',', index=False)
     print("Данные добавлены в файл " + str(DATAFILE_PATH))
 
-
-user_messages1 = input("Введите дату, время начала пары, название пары, надо ли сделать задание 'да' - 'нет' разделяя занчения запятой: ")
+# Запрос на введние пользователем строки с данными о дате, времени, навания предмета и отметки есть ли задание на эту пару
+user_messages1 = input("Введите дату, время начала пары, название пары, надо ли сделать задание 'да' - 'нет' разделяя значения запятой: ")
 
 handle_text(user_messages1)
 
