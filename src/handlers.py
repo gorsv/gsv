@@ -2,7 +2,7 @@ from aiogram import F, flags, types, Router
 from aiogram.types import CallbackQuery, Message
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
-from states import Gen
+from gsv_bot.src.states import Gen
 import kb
 import text
 import utils

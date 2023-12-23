@@ -3,10 +3,13 @@ import datetime as DT
 import time
 from pathlib import Path
 
-DATAFILE_PATH = Path("rest.txt")
+# Путь к файлу с датасетом расписания свободного времени
+DATAFILE_PATH = Path("./resources/rest.txt")
+
+# Список имён полей датасета
 COLUMNS=['Дата', 'Время начала отдыха', 'Время окончания отдыха']
 
-#проверка на свободное время
+# Проверка вводится свободное время или нет
 def its_freetime():
     for i in range(3):
         msg_input = input("Вы хотите записать время отдыха? Пожалуйста укажите - да или нет " )
@@ -22,7 +25,7 @@ def its_freetime():
         else:
             print("Введено неверное значение, попробуйте еще раз (попыток осталось - {})".format(2 - i))
 
-
+# Функция для запроса и сохраннеия даты, времён начала и окончания свободного времени в датасет
 def input_data():
     data, firsttime, lasttime = None, None, None
 
@@ -49,10 +52,12 @@ def input_data():
     else:
         return None
 
+# Функция записи датасета свободного времени в файл
 def readAndWriteDF(df):
     global DATAFILE_PATH
     global COLUMNS
     df_new = df
+    # Проверка наличия файла. Создание файла, если его нет. Запись датасета в файл.
     if DATAFILE_PATH.is_file():
         df_file = pd.read_csv(DATAFILE_PATH, sep=",")
         df_new = pd.concat([df_new, df_file])
